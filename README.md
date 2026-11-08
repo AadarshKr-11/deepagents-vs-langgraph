@@ -65,7 +65,7 @@ Cost uses Gemini 3.8 Flash list prices ($0.75 per million input tokens, $3.75 pe
 
 The LangGraph error on the scale test was: `400 INVALID_ARGUMENT: The input token count exceeds the maximum number of tokens allowed 1048576.`
 
-Full per-run data is in `results_all.csv` and the summary is in `scorecard.csv`.
+Per-run data is in `results_runs.csv` and the summary is in `scorecard.csv`.
 
 ## Findings
 
@@ -102,11 +102,10 @@ Kaggle notebook (CPU is enough); add a Google AI Studio key as the Kaggle secret
 
 | File | Purpose |
 |---|---|
-| `deepagents_vs_langgraph.ipynb` | Agents, tools, measurement, grading and all runs |
-| `task2_build_test_bench.py` | Standard reports + `answer_key.json` (answers computed by code) |
-| `task2_build_stress_reports.py` / `_v2.py` | Medium (17k) and large (28k) report tiers |
-| `task2_build_scale_test.py` | Beyond-window tier (10 × 136k tokens) + question S1 |
-| `results*.csv`, `scorecard.csv`, `scorecard_tokens.png` | Raw runs, summary and chart |
+| `deepagents_vs_langgraph.ipynb` | Everything: data builders (sections 2 and 9), tools, both agents, measurement, grading, all runs and the scorecard |
+| `answer_key.json`, `scale_key.json` | Questions and correct answers (computed by code) |
+| `scorecard.csv`, `scorecard_tokens.png` | Summary table and chart (from the notebook's final cell) |
+| `results_runs.csv` | One row per run, recovered from the notebook's printed outputs. The standard round printed total tokens only; one scale replication run is derived from the scorecard averages (marked in the `source` column). |
 
 Versions: langgraph 1.2.20, deepagents 0.7.34, langchain-google-genai 4.4.3.
 
