@@ -1,0 +1,140 @@
+{
+ "T1": {
+  "question": "What is the launch PTP VAT of Xelora in Germany?",
+  "answer": 1527.1
+ },
+ "T2": {
+  "question": "What is the month-12 PTP VAT of Xelora in France?",
+  "answer": 1051.14
+ },
+ "T3": {
+  "question": "What is the month-12 PTC of Xelora in Italy?",
+  "answer": 1003.21
+ },
+ "T4": {
+  "question": "Across all 8 countries, which country has the largest PTW price erosion % from launch to month 12, and what is it?",
+  "answer": {
+   "country": "Germany",
+   "erosion_pct": 15.0
+  },
+  "all": {
+   "germany": 15.0,
+   "france": 7.65,
+   "italy": 8.57,
+   "spain": 7.92,
+   "uk": 9.2,
+   "netherlands": 3.64,
+   "belgium": 13.04,
+   "sweden": 10.48
+  }
+ },
+ "T5": {
+  "question": "Rank all 8 countries by launch PTP VAT in EUR, highest first.",
+  "answer": [
+   "Italy",
+   "Germany",
+   "Belgium",
+   "Netherlands",
+   "United Kingdom",
+   "France",
+   "Spain",
+   "Sweden"
+  ],
+  "values_eur": {
+   "Italy": 1732.93,
+   "Germany": 1527.1,
+   "Belgium": 1329.7,
+   "Netherlands": 1278.57,
+   "United Kingdom": 1202.4,
+   "France": 1130.27,
+   "Spain": 1097.97,
+   "Sweden": 971.46
+  }
+ },
+ "T6": {
+  "question": "For every country that publishes a PTH, compute the month-12 hospital discount % = (PTW - PTH) / PTW x 100. Which countries have a discount above 7%?",
+  "answer": [
+   "France",
+   "Netherlands"
+  ],
+  "all": {
+   "Germany": 6.86,
+   "France": 7.18,
+   "Italy": 6.25,
+   "United Kingdom": 3.8,
+   "Netherlands": 7.55,
+   "Sweden": 4.26
+  }
+ },
+ "T7": {
+  "question": "What is the average month-12 PTP VAT in EUR across all 8 countries, and which countries are above the average?",
+  "answer": {
+   "average_eur": 1167.92,
+   "above": [
+    "Belgium",
+    "Germany",
+    "Italy",
+    "Netherlands"
+   ]
+  },
+  "values_eur": {
+   "Germany": 1299.53,
+   "France": 1051.14,
+   "Italy": 1584.4,
+   "Spain": 1014.77,
+   "United Kingdom": 1091.83,
+   "Netherlands": 1232.35,
+   "Belgium": 1170.7,
+   "Sweden": 898.67
+  }
+ },
+ "T8": {
+  "question": "For each of the 8 countries, compute price erosion % from launch to month 12 at PTW level and at PTP VAT level. List the countries where the two differ by more than 1.00 percentage point, and explain the cause for each.",
+  "answer": [
+   "Belgium",
+   "Sweden"
+  ],
+  "all": {
+   "Germany": {
+    "ptw_erosion": 15.0,
+    "ptp_vat_erosion": 14.9,
+    "gap": 0.1
+   },
+   "France": {
+    "ptw_erosion": 7.65,
+    "ptp_vat_erosion": 7.0,
+    "gap": 0.65
+   },
+   "Italy": {
+    "ptw_erosion": 8.57,
+    "ptp_vat_erosion": 8.57,
+    "gap": 0.0
+   },
+   "Spain": {
+    "ptw_erosion": 7.92,
+    "ptp_vat_erosion": 7.58,
+    "gap": 0.34
+   },
+   "United Kingdom": {
+    "ptw_erosion": 9.2,
+    "ptp_vat_erosion": 9.2,
+    "gap": 0.0
+   },
+   "Netherlands": {
+    "ptw_erosion": 3.64,
+    "ptp_vat_erosion": 3.61,
+    "gap": 0.03
+   },
+   "Belgium": {
+    "ptw_erosion": 13.04,
+    "ptp_vat_erosion": 11.96,
+    "gap": 1.08
+   },
+   "Sweden": {
+    "ptw_erosion": 10.48,
+    "ptp_vat_erosion": 7.49,
+    "gap": 2.99
+   }
+  }
+ }
+}

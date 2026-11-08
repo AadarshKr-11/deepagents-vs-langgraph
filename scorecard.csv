@@ -1,0 +1,12 @@
+scenario,agent,runs,accuracy,avg_input_tokens,avg_cost_inr,avg_seconds,failures
+1. Small docs (standard),deepagents,8,8/8,30222.0,4.7,54.9,0
+1. Small docs (standard),langgraph,8,8/8,8419.0,2.3,40.6,0
+2. Medium docs (17k tokens/report),deepagents,1,1/1,1095466.0,84.3,144.7,0
+2. Medium docs (17k tokens/report),deepagents+helper,2,2/2,1182826.0,113.4,588.5,0
+2. Medium docs (17k tokens/report),langgraph,2,2/2,1026194.0,79.2,135.8,0
+3. Large docs (28k tokens/report),deepagents,3,3/3,378897.0,35.1,181.6,0
+3. Large docs (28k tokens/report),deepagents+helper,1,1/1,1061654.0,95.0,416.0,0
+3. Large docs (28k tokens/report),langgraph,3,3/3,708697.0,55.3,105.0,0
+4. Beyond context window (1.36M tokens),deepagents,3,3/3,127539.0,11.1,61.1,0
+4. Beyond context window (1.36M tokens),deepagents+helper,1,1/1,2148689.0,166.7,238.0,0
+4. Beyond context window (1.36M tokens),langgraph,1,0/1,924796.0,65.5,36.2,1

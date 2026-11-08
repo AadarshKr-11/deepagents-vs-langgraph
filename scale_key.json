@@ -1,0 +1,19 @@
+{
+ "question": "Across all 10 country reports, which country has the largest PTW price erosion % from launch to month 12 for Xelora, and what is it?",
+ "answer": {
+  "country": "Ireland",
+  "erosion_pct": 22.98
+ },
+ "all": {
+  "Austria": 5.59,
+  "Denmark": 10.4,
+  "Finland": 14.84,
+  "Ireland": 22.98,
+  "Norway": 18.17,
+  "Poland": 5.22,
+  "Portugal": 8.18,
+  "Greece": 17.06,
+  "Czechia": 17.43,
+  "Hungary": 15.95
+ }
+}

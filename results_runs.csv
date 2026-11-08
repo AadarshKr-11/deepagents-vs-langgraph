@@ -1,0 +1,34 @@
+tier,agent,task,correct,input_tokens,output_tokens,total_tokens,seconds,n_todo_calls,n_task_calls,tool_names,error,source
+standard,langgraph,T1,True,,,3042.0,13.2,0.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,langgraph,T2,True,,,3096.0,14.9,0.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,langgraph,T3,True,,,10863.0,22.7,0.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,langgraph,T4,True,,,9271.0,50.6,0.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,langgraph,T5,True,,,11876.0,41.0,0.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,langgraph,T6,True,,,11972.0,28.2,0.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,langgraph,T7,True,,,24946.0,62.4,0.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,langgraph,T8,True,,,30877.0,91.9,0.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,deepagents,T1,True,,,20430.0,22.7,0.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,deepagents,T2,True,,,31593.0,23.6,0.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,deepagents,T3,True,,,59230.0,82.9,0.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,deepagents,T4,True,,,24482.0,29.5,0.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,deepagents,T5,True,,,31866.0,46.3,0.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,deepagents,T6,True,,,25104.0,33.9,0.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,deepagents,T7,True,,,65329.0,95.6,3.0,0.0,,,section 7 printed output (input/output split not printed)
+standard,deepagents,T8,True,,,41687.0,104.6,0.0,0.0,,,section 7 printed output (input/output split not printed)
+stress_v1,deepagents,T8,True,1095466.0,20201.0,1115667.0,144.7,5.0,0.0,,,sections 8-9 printed output
+stress_v2,deepagents,T8,True,204046.0,25051.0,229097.0,182.4,0.0,0.0,,,sections 8-9 printed output
+stress_v2,deepagents+helper,T8,True,1061654.0,57448.0,1119102.0,416.0,2.0,17.0,"{'read_methodology': 1, 'list_reports': 1, 'write_todos': 2, 'glob': 1, 'task': 17, 'ls': 2, 'grep': 6, 'read_file': 8}",,sections 8-9 printed output
+stress_v1,deepagents+helper,T8,True,645943.0,51296.0,697239.0,398.4,3.0,11.0,"{'read_methodology': 1, 'list_reports': 1, 'grep': 1, 'glob': 1, 'ls': 1, 'write_todos': 3, 'task': 11}",,sections 8-9 printed output
+stress_v1,langgraph,T8,True,1026418.0,21282.0,1047700.0,142.5,0.0,0.0,"{'list_reports': 1, 'read_report': 9}",,sections 8-9 printed output
+stress_v2,langgraph,T8,True,567254.0,15521.0,582775.0,107.5,0.0,0.0,"{'list_reports': 1, 'read_report': 9}",,sections 8-9 printed output
+scale,deepagents,S1,True,133472.0,6502.0,139974.0,69.0,2.0,0.0,"{'read_report': 11, 'list_reports': 1, 'write_todos': 2, 'glob': 2, 'ls': 1, 'grep': 2, 'read_file': 10}",,sections 8-9 printed output
+scale,langgraph,S1,False,924796.0,1008.0,925804.0,36.2,0.0,0.0,{},400 INVALID_ARGUMENT: The input token count exceeds the maximum number of tokens allowed 1048576.,sections 8-9 printed output
+scale,deepagents,S1,True,97764.0,,,50.8,,,,,"section 10 replication run; printed line not captured, input tokens and time derived from the scorecard averages (approximate)"
+scale,deepagents,S1,True,151381.0,6079.0,157460.0,63.5,3.0,0.0,"{'list_reports': 1, 'write_todos': 3, 'read_report': 11, 'glob': 2, 'ls': 2, 'grep': 1, 'read_file': 10}",,section 10 printed output
+scale,deepagents+helper,S1,True,2148689.0,43605.0,2192294.0,238.0,2.0,10.0,"{'list_reports': 1, 'read_methodology': 1, 'write_todos': 2, 'task': 10, 'grep': 2, 'glob': 2}",,section 10 printed output
+stress_v2,langgraph,T8,True,991635.0,18013.0,1009648.0,122.8,0.0,0.0,"{'list_reports': 1, 'read_report': 10}",,section 10 printed output
+stress_v2,deepagents,T8,True,455342.0,26973.0,482315.0,200.0,4.0,0.0,"{'list_reports': 1, 'write_todos': 4, 'read_report': 9, 'glob': 3, 'grep': 4, 'read_file': 9}",,section 10 printed output
+stress_v2,langgraph,T7,True,567203.0,12387.0,579590.0,84.7,0.0,0.0,"{'list_reports': 1, 'read_report': 9}",,section 10 printed output
+stress_v2,deepagents,T7,True,477304.0,19455.0,496759.0,162.3,4.0,0.0,"{'list_reports': 1, 'read_report': 9, 'glob': 1, 'read_file': 10, 'grep': 3, 'write_todos': 4}",,section 10 printed output
+stress_v1,langgraph,T8,True,1025971.0,18227.0,1044198.0,129.0,0.0,0.0,"{'list_reports': 1, 'read_report': 9}",,section 10 printed output
+stress_v1,deepagents+helper,T8,True,1719708.0,119804.0,1839512.0,778.6,2.0,17.0,"{'list_reports': 1, 'read_methodology': 1, 'read_file': 1, 'glob': 1, 'ls': 2, 'write_todos': 2, 'task': 17}",,section 10 printed output
