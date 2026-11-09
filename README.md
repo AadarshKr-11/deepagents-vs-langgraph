@@ -89,12 +89,14 @@ Per-run data is in `results_runs.csv` and the summary is in `scorecard.csv`.
 - The grader is rule-based. Every completed run was graded correct; the only failure was LangGraph's context-limit error.
 - Planning was used but not isolated with an on/off ablation. Summarisation never triggered.
 - The data is synthetic and simplified. The margin rules are illustrative, not real country rules.
-
+- All configurations used the same system prompt, with no delegation instructions for the helper setup. Its re-delegation and double-checking might drop with a harness-specific prompt ("delegate each country once and trust the summary"); this was not tested.
+  
 ## Next steps
 
 - Ablate planning (`TodoListMiddleware` on/off) and repeat each configuration 3–5 times.
 - Give sub-agents heavier per-country work (the full price-chain calculation, not just extraction), run them in parallel, and scale to more countries. That is where delegation and offloading should combine.
 - Repeat with a smaller-context model, and test summarisation by forcing long multi-turn runs.
+- Test a manager-specific prompt for the sub-agent setup, and compare it against the identical-prompt baseline.
 
 ## Reproduce
 
