@@ -1,0 +1,5 @@
+tier,agent,runs,correct,avg_input_tokens,avg_cost_inr,avg_seconds
+scale,deepagents+chunking,2,2,64998.5,6.3,48.8
+scale,langgraph+chunking,2,2,90451.0,8.1,72.6
+stress_v2,deepagents+chunking,1,1,440357.0,39.4,181.2
+stress_v2,langgraph+chunking,1,1,313812.0,29.7,186.0

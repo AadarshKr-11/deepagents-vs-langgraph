@@ -1,0 +1,7 @@
+tier,agent,task,final,seconds,input_tokens,output_tokens,n_messages,n_tool_calls,n_task_calls,n_todo_calls,tool_names,error,correct
+scale,langgraph+chunking,S1,"Ireland, 22.98%",71.3,72975,4781,39,22,0,0,"{'list_reports': 1, 'read_report_lines': 11, 'search_report': 10}",,True
+scale,langgraph+chunking,S1,"Ireland, 22.98%",74.0,107927,4858,46,22,0,0,"{'list_reports': 1, 'read_report_lines': 11, 'search_report': 10}",,True
+stress_v2,langgraph+chunking,T8,"Belgium, Sweden",186.0,313812,21449,34,16,0,0,"{'list_reports': 1, 'read_report_lines': 10, 'search_report': 5}",,True
+scale,deepagents+chunking,S1,"Ireland, 22.98%",54.6,71069,5125,36,25,0,3,"{'list_reports': 1, 'read_report_lines': 11, 'write_todos': 3, 'search_report': 10}",,True
+scale,deepagents+chunking,S1,"Ireland, 22.98%",42.9,58928,4387,33,23,0,0,"{'list_reports': 1, 'read_report_lines': 12, 'search_report': 10}",,True
+stress_v2,deepagents+chunking,T8,"Belgium, Sweden",181.2,440357,23737,39,25,0,3,"{'list_reports': 1, 'read_report_lines': 13, 'write_todos': 3, 'search_report': 8}",,True

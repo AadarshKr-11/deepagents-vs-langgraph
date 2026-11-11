@@ -6,7 +6,7 @@
 
 - **Small documents:** both agents were 8/8 correct, but deepagents used **3.6× more input tokens** (about 2× the cost).
 - **Large documents:** its context management (automatic offloading of large tool results plus file search) used **1.9× fewer tokens** than LangGraph across 3 runs, at about 36% lower cost.
-- **Beyond the context window:** when the documents were bigger than the model's 1M-token context window, **LangGraph failed** with a context-limit error and **deepagents answered correctly in 3 of 3 runs**, using about 128k tokens.
+- **Beyond the context window:** when the documents were bigger than the model's 1M-token context window, **LangGraph failed** with a context-limit error and **deepagents answered correctly in 3 of 3 runs**, using about 128k tokens. With chunked-reading tools, LangGraph also passes (see [Follow-up](#follow-up-chunked-reading)).
 - **Custom sub-agents** were not a reliable win: token use varied a lot from run to run, and they were slower.
 
 ![Input tokens by document size](scorecard_tokens.png)
@@ -81,6 +81,25 @@ Per-run data is in `results_runs.csv` and the summary is in `scorecard.csv`.
 
 **When to use which:** a plain LangGraph loop for short tasks and small inputs. deepagents when tool results are large or the total material can exceed the context window. Sub-agents only when each sub-task needs substantial independent work, not a simple lookup.
 
+## Follow-up: chunked reading
+**Question:** the LangGraph agent failed because whole reports accumulated in its message history. Does chunking fix it, and does the harness still help when both agents read selectively?
+
+**Setup:** two new tools, `search_report(name, keyword)` (matching lines with line numbers, at most 20) and `read_report_lines(name, start, n_lines)` (one chunk, at most 200 lines). Both agents get `list_reports` plus these two tools, and no whole-report tool; same model, prompt and grader as above (notebook section 12).
+
+| Tier | Agent | Runs | Correct | Avg input tokens | Avg cost (₹) | Avg time (s) |
+|---|---|---|---|---|---|---|
+| Beyond window (scale) | LangGraph + chunking | 2 | 2/2 | 90,451 | 8.1 | 72.6 |
+| | deepagents + chunking | 2 | 2/2 | 64,999 | 6.3 | 48.8 |
+| Large docs (T8) | LangGraph + chunking | 1 | 1/1 | 313,812 | 29.7 | 186.0 |
+| | deepagents + chunking | 1 | 1/1 | 440,357 | 39.4 | 181.2 |
+
+**Findings**
+- With chunk tools, LangGraph passes the beyond-window test it failed with whole-report reading: the agent searched each report once and read only the matching chunk (`search_report` 10, `read_report_lines` 11 calls).
+- With the same tools, both agents were correct on every run. Token differences (scale ~90k vs ~65k, large docs 314k vs 440k) are within run-to-run variance at 1–2 runs each.
+- So the deciding factor is context management, not the framework. deepagents provides it out of the box for any large tool output (offloading, `grep`, offset reads), which is why it passed with whole-report tools; in LangGraph the same result needed data-specific chunk and search tools.
+
+Per-run data: `results_chunking.csv`; summary: `chunking_summary.csv`.
+
 ## Limitations
 
 - One model (Gemini 3.8 Flash, 1M-token window). With a smaller-window model, the gaps would likely appear earlier.
@@ -89,14 +108,12 @@ Per-run data is in `results_runs.csv` and the summary is in `scorecard.csv`.
 - The grader is rule-based. Every completed run was graded correct; the only failure was LangGraph's context-limit error.
 - Planning was used but not isolated with an on/off ablation. Summarisation never triggered.
 - The data is synthetic and simplified. The margin rules are illustrative, not real country rules.
-- All configurations used the same system prompt, with no delegation instructions for the helper setup. Its re-delegation and double-checking might drop with a harness-specific prompt ("delegate each country once and trust the summary"); this was not tested.
-  
+
 ## Next steps
 
 - Ablate planning (`TodoListMiddleware` on/off) and repeat each configuration 3–5 times.
 - Give sub-agents heavier per-country work (the full price-chain calculation, not just extraction), run them in parallel, and scale to more countries. That is where delegation and offloading should combine.
 - Repeat with a smaller-context model, and test summarisation by forcing long multi-turn runs.
-- Test a manager-specific prompt for the sub-agent setup, and compare it against the identical-prompt baseline.
 
 ## Reproduce
 
@@ -107,6 +124,7 @@ Kaggle notebook (CPU is enough); add a Google AI Studio key as the Kaggle secret
 | `deepagents_vs_langgraph.ipynb` | Everything: data builders (sections 2 and 9), tools, both agents, measurement, grading, all runs and the scorecard |
 | `answer_key.json`, `scale_key.json` | Questions and correct answers (computed by code) |
 | `scorecard.csv`, `scorecard_tokens.png` | Summary table and chart (from the notebook's final cell) |
+| `results_chunking.csv`, `chunking_summary.csv` | Follow-up runs with chunk tools (section 12) |
 | `results_runs.csv` | One row per run, recovered from the notebook's printed outputs. The standard round printed total tokens only; one scale replication run is derived from the scorecard averages (marked in the `source` column). |
 
 Versions: langgraph 1.2.20, deepagents 0.7.34, langchain-google-genai 4.4.3.
